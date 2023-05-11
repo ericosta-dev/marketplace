@@ -1,8 +1,13 @@
-from django.contrib.auth.models import AbstractUser, UserManager as DefaultUserManager
+from django.contrib.auth.models import (
+    AbstractUser,
+    UserManager as DefaultUserManager,
+)
 from django.db import models
+
 
 class UserManager(DefaultUserManager):
     pass
+
 
 class CustomUser(AbstractUser):
     cpf = models.CharField(max_length=11, unique=True)
@@ -13,6 +18,7 @@ class CustomUser(AbstractUser):
     class Meta:
         verbose_name = "User"
         verbose_name_plural = "Users"
+
 
 class Address(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
