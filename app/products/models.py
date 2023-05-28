@@ -8,6 +8,7 @@ class Category(models.Model):
     Fields:
         name (CharField): name of the category
     """
+
     name = models.CharField(max_length=255)
 
     def __str__(self):
@@ -26,6 +27,7 @@ class Product(models.Model):
         stock_quantity (IntegerField): quantity of the product in stock
         category (ForeignKey): category of the product
     """
+
     name = models.CharField(max_length=255)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
