@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+New Category
+{% endblock %}
+{% block content %}
+<div class="form">
+    <h3 style="text-align: center;">New Category</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a class="btn btn-danger " href="{% url 'categories-list' %}">Cancel</a>
+    </form>
+</div>
+{% endblock %}
+
+{% block js%}
+{% endblock %}
