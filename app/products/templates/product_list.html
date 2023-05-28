@@ -1,11 +1,4 @@
 {% extends "base.html" %}
-{% block css%}
-<style>
-    .acoes {
-        margin: 20px;
-    }
-</style>
-{% endblock %}
 
 {% block title %}
 Products
@@ -13,41 +6,47 @@ Products
 
 
 {% block content %}
-<div class="acoes">
-    <a class="btn btn-primary">
-        <i class="bi bi-plus-circle" href="{% url 'products-add'%}"></i> Add Product
-    </a>
-</div>
-<div>
-    <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Price</th>
-            <th scope="col">Description</th>
-            <th scope="col">Manage</th>
-          </tr>
-        </thead>
-        <tbody>
-            {% for product in products %}
-                <tr>
-                    <th scope="row">{{ product.id }}</th>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.price }}</td>
-                    <td>{{ product.description }}</td>
-                    <td>
-                        <div class="btn-group" role="group" aria-label="Manage">
-                            <a class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
-                            <a class="btn btn-danger"><i class="bi bi-trash3"></i></a>
-                        </div>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+<div class="form">
+    <h3 style="text-align: center;">Products</h3>
+    <div class="action-group">
+        <a class="btn btn-primary" href="{% url 'product-add'%}">
+            <i class="bi bi-plus-circle"></i> Add Product
+        </a>
+    </div>
+    <div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Description</th>
+                <th scope="col">Category</th>
+                <th scope="col">Manage</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                    <tr>
+                        <th scope="row">{{ product.id }}</th>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.price }}</td>
+                        <td>{{ product.description }}</td>
+                        <td>{{ product.category}}</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Manage">
+                                <a class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
+                                <a class="btn btn-danger"><i class="bi bi-trash3"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
 
+    </div>
 </div>
+
 {% endblock %}
 
 {% block js%}
